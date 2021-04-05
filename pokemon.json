@@ -1,0 +1,58 @@
+[
+  {
+    "figure": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/blastoise.gif",
+    "name": "Blastoise",
+    "type": "Water",
+    "hp": "362",
+    "lv": "50",
+    "attacks": [{
+        "name": "Ice Beam",
+        "power": "90",
+        "type": "Ice"
+      },
+      {
+        "name": "Scald",
+        "power": "80",
+        "type": "Water"
+      },
+      {
+        "name": "Zen Headbutt",
+        "power": "80",
+        "type": "Psychic"
+      },
+      {
+        "name": "Dragon Pulse",
+        "power": "85",
+        "type": "Dragon"
+      }
+    ]
+  },
+  {
+    "figure": "https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/gengar.gif",
+    "name": "Gengar",
+    "type": "Ghost",
+    "hp": "324",
+    "lv": "50",
+    "attacks": [{
+        "name": "Dark Pulse",
+        "power": "80",
+        "type": "Dark"
+      },
+      {
+        "name": "Dazzling Gleam",
+        "power": "90",
+        "type": "Fairy"
+      },
+      {
+        "name": "Hex",
+        "power": "65",
+        "type": "Ghost"
+      },
+      {
+        "name": "Thunder",
+        "power": "110",
+        "type": "Electric"
+      }
+    ]
+  }
+]

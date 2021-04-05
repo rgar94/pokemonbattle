@@ -1,0 +1,211 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="poke-card.html">
+<link rel="import" href="attack-menu.html">
+<link rel="import" href="status-bar.html">
+
+<dom-module id="pokemon-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: sans-serif;
+      }
+
+      .combat-background {
+        background-image: url("https://userscontent2.emaze.com/images/8075375c-8635-4595-8684-b1fe71b6409b/598ae9ae3f33f0ebac71901acb82f9d3.png");
+        background-size: cover;
+        width: 642.5px;
+        height: 362.5px;
+      }
+
+      .fighter1 {
+        position: relative;
+        left: 70px;
+        top: 190px;
+      }
+
+      .fighter2 {
+        position: relative;
+        left: 380px;
+        bottom: 100px;
+      }
+
+      .my-poke {
+        display: block;
+        width: 200px;
+        position: relative;
+        padding: 10px;
+        top: -60px;
+        left: 400px;
+      }
+
+      .rivals-poke {
+        display: block;
+        width: 200px;
+        position: relative;
+        top: -325px;
+        left: 50px
+      }
+
+      .combat-menu {
+        width: 642.5px;
+        height: 162px;
+        background-color: #93a1a1;
+      }
+
+      .combat-text {
+        width: 365px;
+        height: 140px;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        background-color: #2f6fad;
+        border-color: #b58900;
+        border-style: double;
+        border-width: 10px;
+        border-radius: 20px;
+      }
+
+      .combat-options {
+        display: inline;
+        position: relative;
+        top: -155px;
+        left: 390px;
+      }
+    </style>
+    <div class="combat-background">
+      <poke-card poke="[[poke1.figure]]" class="fighter1"></poke-card>
+      <poke-card poke="[[poke2.figure]]" class="fighter2"></poke-card>
+      <status-bar name="[[poke1.name]]" hp="[[poke1.hp]]" lv="[[poke2.lv]]" class="my-poke"></status-bar>
+      <status-bar name="[[poke2.name]]" hp="[[poke2.hp]]" lv="[[poke1.lv]]" class="rivals-poke"></status-bar>
+    </div>
+    <div class="combat-menu">
+      <div class="combat-text">[[message]]</div>
+      <div class="combat-options">
+        <attack-menu on-attack-list="doDamage" attacks="[[poke1.attacks]]"></attack-menu>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    class PokemonElement extends Polymer.Element {
+      static get is() {
+        return 'pokemon-element';
+      }
+      static get properties() {
+        return {
+          poke1: {
+            type: Array,
+            value: () => ({
+              figure: "https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/gengar.gif",
+              name: "Gengar",
+              type: "Ghost",
+              hp: "324",
+              lv: "50",
+              attacks: [{
+                  name: "Dark Pulse",
+                  power: "80",
+                  type: "Dark"
+                },
+                {
+                  name: "Dazzling Gleam",
+                  power: "90",
+                  type: "Fairy"
+                },
+                {
+                  name: "Hex",
+                  power: "65",
+                  type: "Ghost"
+                },
+                {
+                  name: "Thunder",
+                  power: "110",
+                  type: "Electric"
+                }
+              ]
+            })
+          },
+          poke2: {
+            type: Array,
+            value: () => ({
+              figure: "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/blastoise.gif",
+              name: "Blastoise",
+              type: "Water",
+              hp: "362",
+              lv: "50",
+              attacks: [{
+                  name: "Ice Beam",
+                  power: "90",
+                  type: "Ice"
+                },
+                {
+                  name: "Scald",
+                  power: "80",
+                  type: "Water"
+                },
+                {
+                  name: "Zen Headbutt",
+                  power: "80",
+                  type: "Psychic"
+                },
+                {
+                  name: "Dragon Pulse",
+                  power: "85",
+                  type: "Dragon"
+                }
+              ]
+            })
+          },
+          message: {
+            type: String,
+            value: 'Ready to battle? Choose an attack'
+          }
+        };
+      }
+
+      doDamage(val) {
+        let newhp = this.poke2.hp - val.detail.value;
+        if(newhp < 0) {
+          newhp = 0
+        }
+        setTimeout(() => {
+          this.message = this.poke1.name + ' use ' + val.detail.attack;
+          this.set('poke2.hp', newhp);
+        }, 1000);
+        setTimeout(() => {
+          this.receiveDmg();
+        }, 3000);
+      }
+
+      receiveDmg() {
+        let rndAtk = Math.floor((Math.random() * 3) + 0);
+        let newhp = this.poke1.hp - this.poke2.attacks[rndAtk].power;
+        if(newhp < 0) {
+          newhp = 0
+        }
+        setTimeout(() => {
+          if(!this.isWinner()){  
+          this.message = this.poke2.name + ' use ' + this.poke2.attacks[rndAtk].name;
+          this.set('poke1.hp', newhp);
+          this.isWinner();
+          }
+        }, 1000);
+      }
+
+      isWinner() {
+        if(this.poke1.hp === 0) {
+          this.message = this.poke1.name + " fainted " + this.poke2.name + " wins!";
+          this.set('poke1.figure', '');
+          return true;
+          
+        } else if (this.poke2.hp === 0){
+          this.message = this.poke2.name + " fainted " + this.poke1.name + " wins!";
+          this.set('poke2.figure', '');
+          return true;
+        }
+      }
+    }
+
+    window.customElements.define(PokemonElement.is, PokemonElement);
+  </script>
+</dom-module>

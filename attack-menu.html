@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="/attack.button.html">
+
+<dom-module id="attack-menu">
+	<template>
+		<style>
+			.attack-list {
+				display: grid;
+				grid-template-columns: 120px 120px;
+				grid-template-rows: 70px 70px;
+				column-gap: 5px;
+				row-gap: 5px;
+			}
+		</style>
+		<div class="attack-list">
+			<template class="attack-list" is="dom-repeat" items="{{attacks}}" as="attack">
+				<attack-button on-select-attack="emitAttack" name=[[attack.name]] power=[[attack.power]] type=[[attack.type]]></attack-button>
+			</template>
+		</div>
+	</template>
+
+	<script>
+		class AttackMenu extends Polymer.Element {
+			static get is() {
+				return 'attack-menu';
+			}
+			static get properties() {
+				return {
+					attacks: {
+						type: Array
+					}
+				};
+			}
+
+			connectedCallback() {
+				super.connectedCallback();
+			}
+
+			emitAttack(e) {
+                this.dispatchEvent(new CustomEvent('attack-list', {
+                    detail: e.detail
+                }));
+		}
+	}
+
+		window.customElements.define(AttackMenu.is, AttackMenu);
+	</script>
+</dom-module>

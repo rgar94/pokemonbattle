@@ -1,0 +1,81 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="status-bar">
+	<template>
+		<style>
+			.info {
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 20px;
+				background-color: #F8F6D2;
+				text-align: center;
+			}
+
+			.hp-value {
+				position: relative;
+				right: -55px;
+			}
+
+			.main-info {
+				position: relative;
+			}
+
+			meter {
+				width: 150px;
+			}
+
+			meter::-webkit-meter-bar {
+        background:rgb(133, 133, 151);
+   		}
+
+			meter::-webkit-meter-suboptimum-value {
+        background:rgb(255, 0, 0);
+    	}
+		</style>
+		<div class="info">
+			<div class="main-info">{{name}} LV : {{lv}}</div>
+			<div> HP <meter id="gauge" value="{{hp}}" min="0" max="{{fullHp}}" low="50"></meter></div>
+			<div class="hp-value">{{hp}}</div>
+		</div>
+	</template>
+
+	<script>
+		class StatusBar extends Polymer.Element {
+			static get is() {
+				return 'status-bar';
+			}
+			static get properties() {
+				return {
+					name: {
+						type: String
+					},
+					hp: {
+						type: String
+					},
+					lv: {
+						type: String
+					},
+					fullHp: {
+						type: String
+					}
+				};
+			}
+
+			static get observers() {
+ 
+      }
+
+
+
+			movimientos() {
+				this.fullHp = this.hp;
+			}
+			connectedCallback() {
+				super.connectedCallback();
+				this.movimientos();
+			}
+		}
+
+		window.customElements.define(StatusBar.is, StatusBar);
+	</script>
+</dom-module>

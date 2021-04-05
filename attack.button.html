@@ -1,0 +1,80 @@
+
+
+<dom-module id="attack-button">
+	<template>
+		<style>
+			button {
+        width: 120px;
+        height: 67px;
+				display: inline-block;
+				border-radius: 10px;
+				color: white;
+				align-items: center;
+				background-color: #a7b17a;
+				font-size: 11px;
+			}
+      
+      button:hover {
+                box-shadow: 0 0 30px #184357;
+            }
+
+			#Dark {
+				border-width: 15px;
+				border-color: rgb(94, 43, 43);
+			}
+
+			#Fairy {
+				border-width: 15px;
+				border-color: rgb(201, 129, 177);
+			}
+
+			#Ghost {
+				border-width: 15px;
+				border-color: rgb(112, 2, 116);
+			}
+
+			#Electric {
+				border-width: 15px;
+				border-color: rgb(218, 233, 83);
+			}
+		</style>
+				<button id="[[type]]" on-click="selectAttack">[[name]] <br> Power: [[power]]</button>
+	</template>
+
+	<script>
+		class AttackButton extends Polymer.Element {
+			static get is() {
+				return 'attack-button';
+			}
+			static get properties() {
+				return {
+					name: {
+						type: String
+					},
+          power: {
+            type: String
+          },
+          type: {
+            type: String
+          }
+				};
+			}
+
+			connectedCallback() {
+				super.connectedCallback();
+			}
+
+			selectAttack() {
+				this.dispatchEvent(new CustomEvent('select-attack', {
+					detail: {
+						attack: this.get('name'),
+						type: this.get('type'),
+						value: this.get('power')
+					}
+				}))
+			}
+		}
+
+		window.customElements.define(AttackButton.is, AttackButton);
+	</script>
+</dom-module>

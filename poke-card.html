@@ -1,0 +1,35 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="poke-card">
+  <template>
+    <style>
+    img {
+      width: 160px;
+      height: 160px;
+    }
+    </style>
+    <div class="pokemon-front">
+      <img src="[[poke]]">
+    </div>
+  </template>
+
+  <script>
+    class PokeCard extends Polymer.Element {
+      static get is() {
+        return 'poke-card';
+      }
+      static get properties() {
+        return {
+          poke: {
+            type: String
+          }
+        };
+      }
+      connectedCallback() {
+        super.connectedCallback();
+      }
+    }
+
+    window.customElements.define(PokeCard.is, PokeCard);
+  </script>
+</dom-module>
