@@ -72,10 +72,14 @@
         top: -155px;
         left: 390px;
       }
+
+      iframe {
+        display: none
+      }
     </style>
     <div class="combat-background">
-      <poke-card poke="[[poke1.figure]]" class="fighter1"></poke-card>
-      <poke-card poke="[[poke2.figure]]" class="fighter2"></poke-card>
+      <poke-card poke="[[poke1.back]]" class="fighter1"></poke-card>
+      <poke-card poke="[[poke2.front]]" class="fighter2"></poke-card>
       <status-bar name="[[poke1.name]]" hp="[[poke1.hp]]" lv="[[poke2.lv]]" class="my-poke"></status-bar>
       <status-bar name="[[poke2.name]]" hp="[[poke2.hp]]" lv="[[poke1.lv]]" class="rivals-poke"></status-bar>
     </div>
@@ -85,6 +89,7 @@
         <attack-menu on-attack-list="doDamage" attacks="[[poke1.attacks]]"></attack-menu>
       </div>
     </div>
+    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/623083944&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
   </template>
 
   <script>
@@ -94,73 +99,73 @@
       }
       static get properties() {
         return {
+          pokemons: {
+            type: Object,
+            value: []
+          },
           poke1: {
-            type: Array,
-            value: () => ({
-              figure: "https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/gengar.gif",
-              name: "Gengar",
-              type: "Ghost",
-              hp: "324",
-              lv: "50",
-              attacks: [{
-                  name: "Dark Pulse",
-                  power: "80",
-                  type: "Dark"
-                },
-                {
-                  name: "Dazzling Gleam",
-                  power: "90",
-                  type: "Fairy"
-                },
-                {
-                  name: "Hex",
-                  power: "65",
-                  type: "Ghost"
-                },
-                {
-                  name: "Thunder",
-                  power: "110",
-                  type: "Electric"
-                }
-              ]
-            })
+            type:Array,
           },
           poke2: {
             type: Array,
-            value: () => ({
-              figure: "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/blastoise.gif",
-              name: "Blastoise",
-              type: "Water",
-              hp: "362",
-              lv: "50",
-              attacks: [{
-                  name: "Ice Beam",
-                  power: "90",
-                  type: "Ice"
-                },
-                {
-                  name: "Scald",
-                  power: "80",
-                  type: "Water"
-                },
-                {
-                  name: "Zen Headbutt",
-                  power: "80",
-                  type: "Psychic"
-                },
-                {
-                  name: "Dragon Pulse",
-                  power: "85",
-                  type: "Dragon"
-                }
-              ]
-            })
           },
           message: {
             type: String,
             value: 'Ready to battle? Choose an attack'
           }
         };
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this.loadPokes();
+      }
+
+      async loadPokes() {
+        let response = await fetch('/pokemon.json');
+        let pokemon = await response.json();
+        this.set('pokemons', pokemon.map(u => ({
+          front: u.front,
+          back: u.back,
+          name: u.name,
+          type: u.type,
+          hp: u.hp,
+          lv: u.lv,
+          attacks: [{
+        name: u.attacks[0].name,
+        power: u.attacks[0].power,
+        type: u.attacks[0].type
+      },
+      {
+        name: u.attacks[1].name,
+        power: u.attacks[1].power,
+        type: u.attacks[1].type
+      },
+      {
+        name: u.attacks[2].name,
+        power: u.attacks[2].power,
+        type: u.attacks[2].type
+      
+      },
+      {
+        name: u.attacks[3].name,
+        power: u.attacks[3].power,
+        type: u.attacks[3].type
+      
+      }
+    ]
+        })));
+        this.pickPoke();
+      }
+
+      pickPoke() {
+        let mypoke = Math.floor((Math.random() * 10) + 0);
+        this.set('poke1', this.pokemons[mypoke]);
+        let rivalpoke = Math.floor((Math.random() * 10) + 0);
+        while (rivalpoke === mypoke) {
+        rivalpoke = Math.floor((Math.random() * 10) + 0);
+        }
+        this.set('poke2', this.pokemons[rivalpoke]);
       }
 
       doDamage(val) {
@@ -195,12 +200,12 @@
       isWinner() {
         if(this.poke1.hp === 0) {
           this.message = this.poke1.name + " fainted " + this.poke2.name + " wins!";
-          this.set('poke1.figure', '');
+          this.set('poke1.back', '');
           return true;
           
         } else if (this.poke2.hp === 0){
           this.message = this.poke2.name + " fainted " + this.poke1.name + " wins!";
-          this.set('poke2.figure', '');
+          this.set('poke2.front', '');
           return true;
         }
       }

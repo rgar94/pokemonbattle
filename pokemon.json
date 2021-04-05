@@ -1,6 +1,7 @@
 [
   {
-    "figure": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/blastoise.gif",
+    "front": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/blastoise.gif",
+    "back":"https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/blastoise.gif",
     "name": "Blastoise",
     "type": "Water",
     "hp": "362",
@@ -28,7 +29,8 @@
     ]
   },
   {
-    "figure": "https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/gengar.gif",
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/gengar.gif",
+    "back": "https://www.pkparaiso.com/imagenes/xy/sprites/animados-espalda/gengar.gif",
     "name": "Gengar",
     "type": "Ghost",
     "hp": "324",
@@ -51,6 +53,238 @@
       {
         "name": "Thunder",
         "power": "110",
+        "type": "Electric"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/dragapult.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/dragapult-back.gif",
+    "name": "Dragapult",
+    "type": "Ghost",
+    "hp": "380",
+    "lv": "50",
+    "attacks": [{
+        "name": "Draco Meteor",
+        "power": "130",
+        "type": "Dragon"
+      },
+      {
+        "name": "Flamethrower",
+        "power": "90",
+        "type": "Fire"
+      },
+      {
+        "name": "Phantom Force",
+        "power": "90",
+        "type": "Ghost"
+      },
+      {
+        "name": "Sucker Punch",
+        "power": "70",
+        "type": "Dark"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/frosmoth.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/frosmoth-back.gif",
+    "name": "Frosmoth",
+    "type": "Ice",
+    "hp": "344",
+    "lv": "50",
+    "attacks": [{
+        "name": "Hurricane",
+        "power": "110",
+        "type": "Flying"
+      },
+      {
+        "name": "Avalanche",
+        "power": "60",
+        "type": "Ice"
+      },
+      {
+        "name": "Bug Buzz",
+        "power": "90",
+        "type": "Bug"
+      },
+      {
+        "name": "Play Rough",
+        "power": "90",
+        "type": "Fairy"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/moltres-galar.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/moltres-galar-back.gif",
+    "name": "Moltres-G",
+    "type": "Dark",
+    "hp": "384",
+    "lv": "50",
+    "attacks": [{
+        "name": "Brave Bird",
+        "power": "120",
+        "type": "Flying"
+      },
+      {
+        "name": "Foul Play",
+        "power": "90",
+        "type": "Dark"
+      },
+      {
+        "name": "Steel Wing",
+        "power": "70",
+        "type": "Steel"
+      },
+      {
+        "name": "U-turn",
+        "power": "60",
+        "type": "Bug"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/perrserker.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/perrserker-back.gif",
+    "name": "Perrserker",
+    "type": "Steel",
+    "hp": "300",
+    "lv": "50",
+    "attacks": [{
+        "name": "Iron Head",
+        "power": "80",
+        "type": "Steel"
+      },
+      {
+        "name": "Close Combat",
+        "power": "120",
+        "type": "Fight"
+      },
+      {
+        "name": "Facade",
+        "power": "70",
+        "type": "Normal"
+      },
+      {
+        "name": "Throat Chop",
+        "power": "80",
+        "type": "Dark"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/zapdos-galar.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/zapdos-galar-back.gif",
+    "name": "Zapdos-G",
+    "type": "Fight",
+    "hp": "380",
+    "lv": "50",
+    "attacks": [{
+        "name": "U-turn",
+        "power": "60",
+        "type": "Bug"
+      },
+      {
+        "name": "Close Combat",
+        "power": "120",
+        "type": "Fight"
+      },
+      {
+        "name": "Hurricane",
+        "power": "110",
+        "type": "Flying"
+      },
+      {
+        "name": "Stomping Tantrum",
+        "power": "75",
+        "type": "Ground"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/articuno-galar.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/articuno-galar-back.gif",
+    "name": "Articuno-G",
+    "type": "Psychic",
+    "hp": "384",
+    "lv": "50",
+    "attacks": [{
+        "name": "Air Slash",
+        "power": "75",
+        "type": "Flying"
+      },
+      {
+        "name": "Freezing Glare",
+        "power": "90",
+        "type": "Psychic"
+      },
+      {
+        "name": "Hurricane",
+        "power": "110",
+        "type": "Flying"
+      },
+      {
+        "name": "Shadow Ball",
+        "power": "80",
+        "type": "Ghost"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/duraludon.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/duraludon-back.gif",
+    "name": "Duraludon",
+    "type": "Dragon",
+    "hp": "344",
+    "lv": "50",
+    "attacks": [{
+        "name": "Flamethrower",
+        "power": "90",
+        "type": "Fire"
+      },
+      {
+        "name": "Dark Pulse",
+        "power": "80",
+        "type": "Dark"
+      },
+      {
+        "name": "Dragon Pulse",
+        "power": "85",
+        "type": "Dragon"
+      },
+      {
+        "name": "Steel Beam",
+        "power": "140",
+        "type": "Steel"
+      }
+    ]
+  },
+  {
+    "front":"https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/boltund.gif",
+    "back": "https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/boltund-back.gif",
+    "name": "Boltund",
+    "type": "Electric",
+    "hp": "280",
+    "lv": "50",
+    "attacks": [{
+        "name": "Crunch",
+        "power": "80",
+        "type": "Dark"
+      },
+      {
+        "name": "Flame Charge",
+        "power": "120",
+        "type": "Fire"
+      },
+      {
+        "name": "Play Rough",
+        "power": "90",
+        "type": "Fairy"
+      },
+      {
+        "name": "Wild Charge",
+        "power": "90",
         "type": "Electric"
       }
     ]

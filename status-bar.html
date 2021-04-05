@@ -28,13 +28,10 @@
         background:rgb(133, 133, 151);
    		}
 
-			meter::-webkit-meter-suboptimum-value {
-        background:rgb(255, 0, 0);
-    	}
 		</style>
 		<div class="info">
 			<div class="main-info">{{name}} LV : {{lv}}</div>
-			<div> HP <meter id="gauge" value="{{hp}}" min="0" max="{{fullHp}}" low="50"></meter></div>
+			<div> HP <meter id="gauge" value="{{hp}}" min="0" max="{{fullHp}}" low="150"></meter></div>
 			<div class="hp-value">{{hp}}</div>
 		</div>
 	</template>
@@ -56,23 +53,22 @@
 						type: String
 					},
 					fullHp: {
-						type: String
+						type: Number
 					}
 				};
 			}
 
-			static get observers() {
- 
-      }
 
 
-
-			movimientos() {
+			getLife() {
+				setTimeout(() => {
 				this.fullHp = this.hp;
+        }, 1000);
+
 			}
 			connectedCallback() {
 				super.connectedCallback();
-				this.movimientos();
+				this.getLife();
 			}
 		}
 
