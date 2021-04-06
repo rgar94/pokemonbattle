@@ -1,11 +1,9 @@
-
-
 <dom-module id="attack-button">
 	<template>
 		<style>
 			button {
-        width: 120px;
-        height: 67px;
+				width: 120px;
+				height: 67px;
 				display: inline-block;
 				border-radius: 10px;
 				color: white;
@@ -13,10 +11,10 @@
 				background-color: #a7b17a;
 				font-size: 11px;
 			}
-      
-      button:hover {
-                box-shadow: 0 0 30px #184357;
-            }
+
+			button:hover {
+				box-shadow: 0 0 30px #184357;
+			}
 
 			#Dark {
 				border-width: 15px;
@@ -38,77 +36,77 @@
 				border-color: rgb(218, 233, 83);
 			}
 
-      #Bug {
+			#Bug {
 				border-width: 15px;
 				border-color: rgb(2, 146, 10);
 			}
 
-      #Dragon {
+			#Dragon {
 				border-width: 15px;
 				border-color: rgb(216, 83, 233);
 			}
 
-      #Fire {
+			#Fire {
 				border-width: 15px;
 				border-color: rgb(255, 102, 102);
 			}
 
-      #Water {
+			#Water {
 				border-width: 15px;
 				border-color: rgb(47, 0, 255);
 			}
 
-      #Grass {
+			#Grass {
 				border-width: 15px;
 				border-color: rgb(3, 255, 129);
 			}
 
-      #Fight {
+			#Fight {
 				border-width: 15px;
 				border-color: rgb(165, 79, 58);
 			}
 
-      #Ground {
+			#Ground {
 				border-width: 15px;
 				border-color: rgb(121, 17, 17);
 			}
 
-      #Rock {
+			#Rock {
 				border-width: 15px;
 				border-color: rgb(233, 151, 83);
 			}
 
-      #Flying {
+			#Flying {
 				border-width: 15px;
 				border-color: rgb(156, 220, 245);
 			}
 
-      #Psychic {
+			#Psychic {
 				border-width: 15px;
 				border-color: rgb(116, 71, 121);
 			}
 
-      #Ice {
+			#Ice {
 				border-width: 15px;
 				border-color: rgb(142, 218, 253);
 			}
 
-      #Steel {
+			#Steel {
 				border-width: 15px;
 				border-color: rgb(85, 85, 85);
 			}
 
-      #Posion {
+			#Posion {
 				border-width: 15px;
 				border-color: rgb(112, 17, 104);
 			}
 
-      #Normal {
+			#Normal {
 				border-width: 15px;
 				border-color: rgb(160, 160, 160);
 			}
 		</style>
-				<button id="[[type]]" on-click="selectAttack">[[name]] <br> Power: [[power]]</button>
+		<button id="[[type]]" on-click="selectAttack">[[name]] <br> Power: [[power]]</button>
 	</template>
 
 	<script>
@@ -121,12 +119,12 @@
 					name: {
 						type: String
 					},
-          power: {
-            type: String
-          },
-          type: {
-            type: String
-          }
+					power: {
+						type: String
+					},
+					type: {
+						type: String
+					}
 				};
 			}
 

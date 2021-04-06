@@ -14,7 +14,8 @@
 		</style>
 		<div class="attack-list">
 			<template class="attack-list" is="dom-repeat" items="{{attacks}}" as="attack">
-				<attack-button on-select-attack="emitAttack" name=[[attack.name]] power=[[attack.power]] type=[[attack.type]]></attack-button>
+				<attack-button on-select-attack="emitAttack" name=[[attack.name]] power=[[attack.power]] type=[[attack.type]]>
+				</attack-button>
 			</template>
 		</div>
 	</template>
@@ -37,11 +38,11 @@
 			}
 
 			emitAttack(e) {
-                this.dispatchEvent(new CustomEvent('attack-list', {
-                    detail: e.detail
-                }));
+				this.dispatchEvent(new CustomEvent('attack-list', {
+					detail: e.detail
+				}));
+			}
 		}
-	}
 
 		window.customElements.define(AttackMenu.is, AttackMenu);
 	</script>

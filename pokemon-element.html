@@ -89,7 +89,8 @@
         <attack-menu on-attack-list="doDamage" attacks="[[poke1.attacks]]"></attack-menu>
       </div>
     </div>
-    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/623083944&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    <iframe allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/623083944&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
   </template>
 
   <script>
@@ -104,7 +105,7 @@
             value: []
           },
           poke1: {
-            type:Array,
+            type: Array,
           },
           poke2: {
             type: Array,
@@ -132,28 +133,28 @@
           hp: u.hp,
           lv: u.lv,
           attacks: [{
-        name: u.attacks[0].name,
-        power: u.attacks[0].power,
-        type: u.attacks[0].type
-      },
-      {
-        name: u.attacks[1].name,
-        power: u.attacks[1].power,
-        type: u.attacks[1].type
-      },
-      {
-        name: u.attacks[2].name,
-        power: u.attacks[2].power,
-        type: u.attacks[2].type
-      
-      },
-      {
-        name: u.attacks[3].name,
-        power: u.attacks[3].power,
-        type: u.attacks[3].type
-      
-      }
-    ]
+              name: u.attacks[0].name,
+              power: u.attacks[0].power,
+              type: u.attacks[0].type
+            },
+            {
+              name: u.attacks[1].name,
+              power: u.attacks[1].power,
+              type: u.attacks[1].type
+            },
+            {
+              name: u.attacks[2].name,
+              power: u.attacks[2].power,
+              type: u.attacks[2].type
+
+            },
+            {
+              name: u.attacks[3].name,
+              power: u.attacks[3].power,
+              type: u.attacks[3].type
+
+            }
+          ]
         })));
         this.pickPoke();
       }
@@ -163,14 +164,14 @@
         this.set('poke1', this.pokemons[mypoke]);
         let rivalpoke = Math.floor((Math.random() * 10) + 0);
         while (rivalpoke === mypoke) {
-        rivalpoke = Math.floor((Math.random() * 10) + 0);
+          rivalpoke = Math.floor((Math.random() * 10) + 0);
         }
         this.set('poke2', this.pokemons[rivalpoke]);
       }
 
       doDamage(val) {
         let newhp = this.poke2.hp - val.detail.value;
-        if(newhp < 0) {
+        if (newhp < 0) {
           newhp = 0
         }
         setTimeout(() => {
@@ -185,25 +186,25 @@
       receiveDmg() {
         let rndAtk = Math.floor((Math.random() * 3) + 0);
         let newhp = this.poke1.hp - this.poke2.attacks[rndAtk].power;
-        if(newhp < 0) {
+        if (newhp < 0) {
           newhp = 0
         }
         setTimeout(() => {
-          if(!this.isWinner()){  
-          this.message = this.poke2.name + ' use ' + this.poke2.attacks[rndAtk].name;
-          this.set('poke1.hp', newhp);
-          this.isWinner();
+          if (!this.isWinner()) {
+            this.message = this.poke2.name + ' use ' + this.poke2.attacks[rndAtk].name;
+            this.set('poke1.hp', newhp);
+            this.isWinner();
           }
         }, 1000);
       }
 
       isWinner() {
-        if(this.poke1.hp === 0) {
+        if (this.poke1.hp === 0) {
           this.message = this.poke1.name + " fainted " + this.poke2.name + " wins!";
           this.set('poke1.back', '');
           return true;
-          
-        } else if (this.poke2.hp === 0){
+
+        } else if (this.poke2.hp === 0) {
           this.message = this.poke2.name + " fainted " + this.poke1.name + " wins!";
           this.set('poke2.front', '');
           return true;
